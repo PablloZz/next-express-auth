@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 
-export default function Page() {
+export default function SignIn() {
   return (
     <form className={styles.form}>
       <h1 className={styles.heading}>Sign in</h1>
