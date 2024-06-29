@@ -37,7 +37,7 @@ export default function SignUp() {
           />
         </label>
         <label className={styles["label"]}>
-          <span>Password:</span>
+          <span>Confirm Password:</span>
           <input
             type="Confirm password"
             name="confirmPassword"
