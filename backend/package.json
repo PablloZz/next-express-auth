@@ -3,7 +3,8 @@
   "name": "@next-express-auth/backend",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "db:generate": "drizzle-kit generate --dialect=postgresql --schema=src/libs/packages/drizzle/schema --out=src/libs/packages/drizzle/migrations",
+    "db:migrate": "tsx src/libs/packages/drizzle/migrate.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.9.4",
@@ -11,6 +12,6 @@
     "drizzle-orm": "^0.31.2"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.22.7"
+    "drizzle-kit": "^0.22.8"
   }
 }
