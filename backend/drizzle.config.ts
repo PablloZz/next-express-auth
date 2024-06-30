@@ -1,8 +1,8 @@
 import { defineConfig } from "drizzle-kit";
 import { config } from "@/libs/packages/config";
 
-const drizzleConfig = defineConfig({
-  schema: "src/libs/packages/drizzle/schema.ts",
+export default defineConfig({
+  schema: "src/libs/packages/drizzle/schema",
   out: "src/libs/packages/drizzle/migrations",
   dialect: "postgresql",
   dbCredentials: {
@@ -11,5 +11,3 @@ const drizzleConfig = defineConfig({
   verbose: true,
   strict: true,
 });
-
-export { drizzleConfig };

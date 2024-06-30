@@ -3,7 +3,8 @@
   "name": "@next-express-auth/backend",
   "version": "1.0.0",
   "scripts": {
-    "db:generate": "drizzle-kit generate --dialect=postgresql --schema=src/libs/packages/drizzle/schema --out=src/libs/packages/drizzle/migrations",
+    "db:generate": "drizzle-kit generate",
+    "db:drop": "drizzle-kit drop",
     "db:migrate": "tsx src/libs/packages/drizzle/migrate.ts"
   },
   "dependencies": {
