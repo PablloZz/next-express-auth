@@ -15,6 +15,13 @@
       "when": 1720249293503,
       "tag": "0001_conscious_groot",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1720266480964,
+      "tag": "0002_abandoned_mikhail_rasputin",
+      "breakpoints": true
     }
   ]
 }
