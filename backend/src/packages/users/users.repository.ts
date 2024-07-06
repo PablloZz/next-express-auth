@@ -2,7 +2,7 @@ import { db } from "@/libs/packages/drizzle/db";
 import { type NewUser } from "./libs/types";
 import { users } from "@/libs/packages/drizzle/schema";
 
-async function signUp(user: NewUser) {
+async function create(user: NewUser) {
   const response = await db
     .insert(users)
     .values({ ...user })
@@ -11,4 +11,4 @@ async function signUp(user: NewUser) {
   return response[0]?.id;
 }
 
-export { signUp };
+export { create };
