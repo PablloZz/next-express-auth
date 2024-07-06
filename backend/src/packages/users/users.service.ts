@@ -1,5 +1,5 @@
 import { encryptPassword } from "@/libs/packages/encrypt";
-import { saveNewUser } from "./users.repository";
+import * as usersRepository from "./users.repository";
 import { type CreateNewUserRequestDto } from "./libs/types";
 import { config } from "@/libs/packages/config";
 
@@ -11,7 +11,11 @@ async function create(user: CreateNewUserRequestDto) {
     passwordSalt: config.encrypt.PASSWORD_SALT,
   };
 
-  return await saveNewUser(newUser);
+  return await usersRepository.create(newUser);
 }
 
-export { create };
+async function findByEmail(email: string) {
+  return await usersRepository.findByEmail(email);
+}
+
+export { create, findByEmail };
