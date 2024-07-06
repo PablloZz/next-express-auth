@@ -1,5 +1,6 @@
 type EnvironmentSchema = {
   NEON_CONNECTION_STRING: string;
+  JWT_TOKEN_SECRET: string;
 };
 
 type Encrypt = {
