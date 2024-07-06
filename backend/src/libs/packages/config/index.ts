@@ -7,6 +7,9 @@ const config: Config = {
   env: {
     NEON_CONNECTION_STRING,
   },
+  encrypt: {
+    PASSWORD_SALT: 10,
+  },
 };
 
 export { config };
