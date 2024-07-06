@@ -1,1 +1,1 @@
-export { type NewUser } from "./libs/types";
+export { type CreateNewUserRequestDto } from "./libs/types";
