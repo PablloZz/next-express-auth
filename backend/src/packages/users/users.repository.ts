@@ -1,14 +1,14 @@
 import { db } from "@/libs/packages/drizzle/db";
-import { type NewUser } from "./libs/types";
 import { users } from "@/libs/packages/drizzle/schema";
+import { type SaveNewUser } from "./libs/types";
 
-async function create(user: NewUser) {
+async function saveNewUser(user: SaveNewUser) {
   const response = await db
     .insert(users)
     .values({ ...user })
-    .returning({ id: users.id });
+    .returning({ id: users.id, username: users.username });
 
-  return response[0]?.id;
+  return response[0];
 }
 
-export { create };
+export { saveNewUser };
