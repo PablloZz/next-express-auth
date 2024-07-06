@@ -1,8 +1,9 @@
 import { db } from "@/libs/packages/drizzle/db";
 import { users } from "@/libs/packages/drizzle/schema";
 import { type SaveNewUser } from "./libs/types";
+import { eq } from "drizzle-orm";
 
-async function saveNewUser(user: SaveNewUser) {
+async function create(user: SaveNewUser) {
   const response = await db
     .insert(users)
     .values({ ...user })
@@ -11,4 +12,15 @@ async function saveNewUser(user: SaveNewUser) {
   return response[0];
 }
 
-export { saveNewUser };
+async function findByEmail(emailToSearch: string) {
+  const response = await db.select().from(users).where(eq(users.email, emailToSearch));
+  const [user] = response;
+
+  if (!user) return null;
+
+  const { createdAt, email, updatedAt, username } = user;
+
+  return { createdAt, email, updatedAt, username };
+}
+
+export { create, findByEmail };
