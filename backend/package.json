@@ -5,7 +5,8 @@
   "scripts": {
     "db:generate": "drizzle-kit generate",
     "db:drop": "drizzle-kit drop",
-    "db:migrate": "tsx src/libs/packages/drizzle/migrate.ts"
+    "db:migrate": "tsx src/libs/packages/drizzle/migrate.ts",
+    "start:dev": "nodemon --exec node -r tsconfig-paths/register -r ts-node/register ./src/index.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.9.4",
@@ -18,6 +19,9 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^4.17.21",
-    "drizzle-kit": "^0.22.8"
+    "drizzle-kit": "^0.22.8",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0"
   }
 }
