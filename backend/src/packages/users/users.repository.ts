@@ -18,9 +18,9 @@ async function findByEmail(emailToSearch: string) {
 
   if (!user) return null;
 
-  const { createdAt, email, updatedAt, username } = user;
+  const { email, username, passwordHash, id } = user;
 
-  return { createdAt, email, updatedAt, username };
+  return { email, username, passwordHash, id };
 }
 
 export { create, findByEmail };
