@@ -6,4 +6,9 @@ const ApiPath = {
   AUTH: "/auth",
 } as const;
 
-export { TokenExpirationTime, ApiPath };
+const ResponseStatus = {
+  SUCCESS: 200,
+  CREATED: 201,
+} as const;
+
+export { TokenExpirationTime, ApiPath, ResponseStatus };
