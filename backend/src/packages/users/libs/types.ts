@@ -1,11 +1,11 @@
 import { users } from "@/libs/packages/drizzle/schema";
 
-type SaveNewUser = typeof users.$inferInsert;
+type CreateUser = typeof users.$inferInsert;
 
-type CreateNewUserRequestDto = {
-  email: SaveNewUser["email"];
-  username: SaveNewUser["username"];
+type CreateUserRequestDto = {
+  email: CreateUser["email"];
+  username: CreateUser["username"];
   password: string;
 };
 
-export { type SaveNewUser, type CreateNewUserRequestDto };
+export { type CreateUser, type CreateUserRequestDto };

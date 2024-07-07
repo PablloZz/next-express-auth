@@ -1,9 +1,9 @@
 import { encryptPassword } from "@/libs/packages/encrypt";
 import * as usersRepository from "./users.repository";
-import { type CreateNewUserRequestDto } from "./libs/types";
+import { type CreateUserRequestDto } from "./libs/types";
 import { config } from "@/libs/packages/config";
 
-async function create(user: CreateNewUserRequestDto) {
+async function create(user: CreateUserRequestDto) {
   const hashedPassword = await encryptPassword(user.password, config.encrypt.PASSWORD_SALT);
   const newUser = {
     ...user,

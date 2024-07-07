@@ -1,9 +1,9 @@
 import { db } from "@/libs/packages/drizzle/db";
 import { users } from "@/libs/packages/drizzle/schema";
-import { type SaveNewUser } from "./libs/types";
+import { type CreateUser } from "./libs/types";
 import { eq } from "drizzle-orm";
 
-async function create(user: SaveNewUser) {
+async function create(user: CreateUser) {
   const response = await db
     .insert(users)
     .values({ ...user })

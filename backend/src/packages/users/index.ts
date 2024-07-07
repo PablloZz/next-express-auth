@@ -1,2 +1,2 @@
-export { type CreateNewUserRequestDto } from "./libs/types";
+export { type CreateUserRequestDto } from "./libs/types";
 export * as usersService from "./users.service";

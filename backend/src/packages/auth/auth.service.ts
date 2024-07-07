@@ -1,8 +1,8 @@
 import { TokenExpirationTime } from "@/libs/enums";
 import { createToken } from "@/libs/packages/token";
-import { usersService, type CreateNewUserRequestDto } from "@/packages/users";
+import { usersService, type CreateUserRequestDto } from "@/packages/users";
 
-async function signUp(user: CreateNewUserRequestDto) {
+async function signUp(user: CreateUserRequestDto) {
   const existedUser = await usersService.findByEmail(user.email);
 
   if (existedUser) throw new Error("User with this email already exists");
