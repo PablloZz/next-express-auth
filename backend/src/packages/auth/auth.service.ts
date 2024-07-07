@@ -1,6 +1,11 @@
 import { TokenExpirationTime } from "@/libs/enums";
 import { createToken } from "@/libs/packages/token";
-import { usersService, type CreateUserRequestDto } from "@/packages/users";
+import {
+  type SignInUserRequestDto,
+  usersService,
+  type CreateUserRequestDto,
+} from "@/packages/users";
+import { comparePassword } from "@/libs/packages/encrypt";
 
 async function signUp(user: CreateUserRequestDto) {
   const existedUser = await usersService.findByEmail(user.email);
@@ -16,4 +21,19 @@ async function signUp(user: CreateUserRequestDto) {
   return { token, newUser };
 }
 
-export { signUp };
+async function signIn(user: SignInUserRequestDto) {
+  const existedUser = await usersService.findByEmail(user.email);
+
+  if (!existedUser) throw new Error("User with this email doesn't exist");
+
+  const { id, username, passwordHash } = existedUser;
+  const isPasswordCorrect = comparePassword(user.password, passwordHash);
+
+  if (!isPasswordCorrect) throw new Error("Password isn't correct");
+
+  const token = createToken({ userId: id }, TokenExpirationTime.ONE_DAY);
+
+  return { token, user: { id, username } };
+}
+
+export { signUp, signIn };
