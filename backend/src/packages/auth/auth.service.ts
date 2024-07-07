@@ -16,7 +16,7 @@ async function signUp(user: CreateUserRequestDto) {
 
   if (!newUser) throw new Error("Sign up failed");
 
-  const token = createToken({ userId: newUser.id }, TokenExpirationTime.ONE_DAY);
+  const token = await createToken({ userId: newUser.id }, TokenExpirationTime.ONE_DAY);
 
   return { token, newUser };
 }
@@ -27,11 +27,11 @@ async function signIn(user: SignInUserRequestDto) {
   if (!existedUser) throw new Error("User with this email doesn't exist");
 
   const { id, username, passwordHash } = existedUser;
-  const isPasswordCorrect = comparePassword(user.password, passwordHash);
+  const isPasswordCorrect = await comparePassword(user.password, passwordHash);
 
   if (!isPasswordCorrect) throw new Error("Password isn't correct");
 
-  const token = createToken({ userId: id }, TokenExpirationTime.ONE_DAY);
+  const token = await createToken({ userId: id }, TokenExpirationTime.ONE_DAY);
 
   return { token, user: { id, username } };
 }
