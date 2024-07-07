@@ -18,7 +18,7 @@ button {
   cursor: pointer;
 }
 
-.visibilityHidden {
+.visibility-hidden {
   position: absolute;
   left: -10000px;
 }

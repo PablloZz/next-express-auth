@@ -5,5 +5,5 @@ type Properties = {
 };
 
 export default function AuthLayout({ children }: Properties) {
-  return <main className={styles.authLayout}>{children}</main>;
+  return <main className={styles["auth-layout"]}>{children}</main>;
 }
