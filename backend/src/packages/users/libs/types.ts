@@ -8,4 +8,9 @@ type CreateUserRequestDto = {
   password: string;
 };
 
-export { type CreateUser, type CreateUserRequestDto };
+type SignInUserRequestDto = {
+  email: CreateUser["email"];
+  password: string;
+};
+
+export { type CreateUser, type CreateUserRequestDto, type SignInUserRequestDto };
