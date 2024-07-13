@@ -7,6 +7,7 @@ import {
 } from "@/packages/users";
 import { comparePassword } from "@/libs/packages/encrypt";
 import { ForbiddenError } from "@/libs/exceptions/forbiddenError.exception";
+import { InternalServerError } from "@/libs/exceptions";
 
 async function signUp(user: CreateUserRequestDto) {
   const existedUser = await usersService.findByEmail(user.email);
@@ -15,7 +16,7 @@ async function signUp(user: CreateUserRequestDto) {
 
   const newUser = await usersService.create(user);
 
-  if (!newUser) throw new Error("Sign up failed");
+  if (!newUser) throw new InternalServerError(ExceptionMessage.INTERNAL_SERVER_ERROR);
 
   const token = await createToken({ userId: newUser.id }, TokenExpirationTime.ONE_DAY);
 
