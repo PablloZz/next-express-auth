@@ -7,7 +7,7 @@ import {
 } from "@/packages/users";
 import { comparePassword } from "@/libs/packages/encrypt";
 import { ForbiddenError } from "@/libs/exceptions/forbiddenError.exception";
-import { InternalServerError, NotFoundError } from "@/libs/exceptions";
+import { BadRequestError, InternalServerError, NotFoundError } from "@/libs/exceptions";
 
 async function signUp(user: CreateUserRequestDto) {
   const existedUser = await usersService.findByEmail(user.email);
@@ -31,7 +31,7 @@ async function signIn(user: SignInUserRequestDto) {
   const { id, username, passwordHash } = existedUser;
   const isPasswordCorrect = await comparePassword(user.password, passwordHash);
 
-  if (!isPasswordCorrect) throw new Error("Password isn't correct");
+  if (!isPasswordCorrect) throw new BadRequestError(ExceptionMessage.INVALID_CREDENTIALS);
 
   const token = await createToken({ userId: id }, TokenExpirationTime.ONE_DAY);
 
