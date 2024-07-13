@@ -3,11 +3,13 @@ import { ResponseStatus } from "@/libs/enums";
 import { authService } from "@/packages/auth";
 
 async function signUp(req: Request, res: Response) {
-  res.status(ResponseStatus.CREATED).send(authService.signUp(req.body));
+  const user = await authService.signUp(req.body);
+  res.status(ResponseStatus.CREATED).send(user);
 }
 
 async function signIn(req: Request, res: Response) {
-  res.status(ResponseStatus.SUCCESS).send(authService.signIn(req.body));
+  const user = await authService.signIn(req.body);
+  res.status(ResponseStatus.SUCCESS).send(user);
 }
 
 export { signUp, signIn };
