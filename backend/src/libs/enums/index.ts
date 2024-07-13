@@ -9,6 +9,11 @@ const ApiPath = {
 const HttpCode = {
   SUCCESS: 200,
   CREATED: 201,
+  FORBIDDEN: 403,
 } as const;
 
-export { TokenExpirationTime, ApiPath, HttpCode };
+const ExceptionMessage = {
+  EMAIL_IS_ALREADY_USED: "User with this email already exists",
+};
+
+export { TokenExpirationTime, ApiPath, HttpCode, ExceptionMessage };

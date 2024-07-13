@@ -1,4 +1,4 @@
-import { TokenExpirationTime } from "@/libs/enums";
+import { ExceptionMessage, TokenExpirationTime } from "@/libs/enums";
 import { createToken } from "@/libs/packages/token";
 import {
   type SignInUserRequestDto,
@@ -6,11 +6,12 @@ import {
   type CreateUserRequestDto,
 } from "@/packages/users";
 import { comparePassword } from "@/libs/packages/encrypt";
+import { ForbiddenError } from "@/libs/exceptions/forbiddenError.exception";
 
 async function signUp(user: CreateUserRequestDto) {
   const existedUser = await usersService.findByEmail(user.email);
 
-  if (existedUser) throw new Error("User with this email already exists");
+  if (existedUser) throw new ForbiddenError(ExceptionMessage.EMAIL_IS_ALREADY_USED);
 
   const newUser = await usersService.create(user);
 
