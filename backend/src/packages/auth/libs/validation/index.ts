@@ -6,4 +6,9 @@ const signUpValidationSchema = z.object({
   password: z.string(),
 });
 
-export { signUpValidationSchema };
+const signInValidationSchema = z.object({
+  email: z.string().email(),
+  password: z.string(),
+});
+
+export { signInValidationSchema, signUpValidationSchema };
