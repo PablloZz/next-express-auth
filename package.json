@@ -1,17 +1,5 @@
 {
-  "workspaces": [
-    "backend",
-    "frontend"
-  ],
   "name": "next-express-auth",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "devDependencies": {
-    "i": "^0.3.7",
-    "npm": "^10.8.1",
-    "prettier": "^3.3.2",
-    "tsc-alias": "^1.8.10",
-    "typescript": "^5.5.2"
-  }
+  "license": "MIT"
 }
