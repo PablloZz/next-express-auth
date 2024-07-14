@@ -1,12 +1,13 @@
 import "dotenv/config";
-import { Config, EnvironmentSchema } from "./libs/types";
+import { Config } from "./libs/types";
 
-const { NEON_CONNECTION_STRING, JWT_TOKEN_SECRET } = process.env as EnvironmentSchema;
+const { NEON_CONNECTION_STRING, JWT_TOKEN_SECRET, PORT } = process.env;
 
 const config: Config = {
   env: {
-    NEON_CONNECTION_STRING,
-    JWT_TOKEN_SECRET,
+    db: { NEON_CONNECTION_STRING: NEON_CONNECTION_STRING! },
+    jwt: { JWT_TOKEN_SECRET: JWT_TOKEN_SECRET! },
+    app: { PORT: PORT! },
   },
   encrypt: {
     PASSWORD_SALT: 10,

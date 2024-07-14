@@ -1,10 +1,11 @@
 import { ApiPath } from "@/libs/enums";
 import { authRouter } from "@/packages/auth";
 import express from "express";
-import { handleError } from "@/libs/middleware";
+import { checkAuthentication, handleError } from "@/libs/middleware";
 import { postsRouter } from "@/packages/posts";
+import { config } from "@/libs/packages/config";
 
-const PORT = 3000;
+const { PORT } = config.env.app;
 const app = express();
 app.use(express.json());
 app.use(ApiPath.AUTH, authRouter);
