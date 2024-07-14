@@ -4,6 +4,7 @@ const TokenExpirationTime = {
 
 const ApiPath = {
   AUTH: "/auth",
+  POSTS: "/posts",
 } as const;
 
 const HttpCode = {
