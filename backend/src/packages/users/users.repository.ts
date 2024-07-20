@@ -23,4 +23,15 @@ async function findByEmail(emailToSearch: string) {
   return { email, username, passwordHash, id };
 }
 
-export { create, findByEmail };
+async function findById(idToSearch: number) {
+  const response = await db.select().from(users).where(eq(users.id, idToSearch));
+  const [user] = response;
+
+  if (!user) return null;
+
+  const { email, username, passwordHash, id } = user;
+
+  return { email, username, passwordHash, id };
+}
+
+export { create, findByEmail, findById };
