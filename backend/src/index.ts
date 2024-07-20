@@ -9,6 +9,6 @@ const { PORT } = config.env.app;
 const app = express();
 app.use(express.json());
 app.use(ApiPath.AUTH, authRouter);
-app.use(ApiPath.POSTS, postsRouter);
+app.use(ApiPath.POSTS, checkAuthentication, postsRouter);
 app.use(handleError);
 app.listen(PORT, () => console.log(`App listening on port ${PORT}...`));
