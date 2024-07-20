@@ -7,7 +7,7 @@ async function create(user: CreateUser) {
   const response = await db
     .insert(users)
     .values({ ...user })
-    .returning({ id: users.id, username: users.username });
+    .returning({ id: users.id, username: users.username, email: users.email });
 
   return response[0];
 }
