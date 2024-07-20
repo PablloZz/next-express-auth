@@ -7,7 +7,7 @@ async function create(user: CreateUser) {
   const response = await db
     .insert(users)
     .values({ ...user })
-    .returning({ id: users.id, username: users.username, email: users.email });
+    .returning({ id: users.id, username: users.username, email: users.email, type: users.type });
 
   return response[0];
 }
@@ -18,9 +18,9 @@ async function findByEmail(emailToSearch: string) {
 
   if (!user) return null;
 
-  const { email, username, passwordHash, id } = user;
+  const { email, username, passwordHash, id, type } = user;
 
-  return { email, username, passwordHash, id };
+  return { email, username, passwordHash, id, type };
 }
 
 async function findById(idToSearch: number) {
@@ -29,9 +29,9 @@ async function findById(idToSearch: number) {
 
   if (!user) return null;
 
-  const { email, username, passwordHash, id } = user;
+  const { email, username, passwordHash, id, type } = user;
 
-  return { email, username, passwordHash, id };
+  return { email, username, passwordHash, id, type };
 }
 
 export { create, findByEmail, findById };

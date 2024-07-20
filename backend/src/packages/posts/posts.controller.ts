@@ -5,4 +5,8 @@ async function get(_req: Request, res: Response) {
   res.status(HttpCode.SUCCESS).send("Posts");
 }
 
-export { get };
+async function getAdminPosts(_req: Request, res: Response) {
+  res.status(HttpCode.SUCCESS).send("Admin Posts");
+}
+
+export { get, getAdminPosts };

@@ -29,14 +29,14 @@ async function signIn(user: SignInUserRequestDto): Promise<UserAuthResponseDto> 
 
   if (!existedUser) throw new NotFoundError(ExceptionMessage.USER_NOT_FOUND);
 
-  const { id, username, passwordHash, email } = existedUser;
+  const { id, username, passwordHash, email, type } = existedUser;
   const isPasswordCorrect = await comparePassword(user.password, passwordHash);
 
   if (!isPasswordCorrect) throw new BadRequestError(ExceptionMessage.INVALID_CREDENTIALS);
 
   const token = await createToken({ userId: id }, TokenExpirationTime.ONE_DAY);
 
-  return { token, user: { id, username, email } };
+  return { token, user: { id, username, email, type } };
 }
 
 export { signUp, signIn };

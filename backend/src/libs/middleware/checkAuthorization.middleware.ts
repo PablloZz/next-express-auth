@@ -18,8 +18,8 @@ async function checkAuthorization(req: Request, _res: Response, next: NextFuncti
 
   if (!user) throw new NotFoundError(ExceptionMessage.USER_NOT_FOUND);
 
-  const { email, id, username } = user;
-  req.user = { email, id, username };
+  const { email, id, username, type } = user;
+  req.user = { email, id, username, type };
   next();
 }
 
