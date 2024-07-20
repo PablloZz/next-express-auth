@@ -1,7 +1,7 @@
 import { HttpError } from "@/libs/exceptions";
 import { ZodError } from "zod";
 import { type NextFunction, type Request, type Response } from "express";
-import { ApiPath, ExceptionMessage, HttpCode } from "@/libs/enums";
+import { ExceptionMessage, HttpCode } from "@/libs/enums";
 
 function handleError(err: unknown, _req: Request, res: Response, _next: NextFunction) {
   if (err instanceof ZodError) {

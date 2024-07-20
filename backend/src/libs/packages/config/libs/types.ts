@@ -1,6 +1,7 @@
 type EnvironmentSchema = {
-  NEON_CONNECTION_STRING: string;
-  JWT_TOKEN_SECRET: string;
+  db: { NEON_CONNECTION_STRING: string };
+  jwt: { JWT_TOKEN_SECRET: string };
+  app: { PORT: string };
 };
 
 type Encrypt = {

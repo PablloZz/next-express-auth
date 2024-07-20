@@ -6,8 +6,8 @@ import { eq } from "drizzle-orm";
 async function create(user: CreateUser) {
   const response = await db
     .insert(users)
-    .values({ ...user })
-    .returning({ id: users.id, username: users.username });
+    .values({ ...user, type: "user" })
+    .returning({ id: users.id, username: users.username, email: users.email, type: users.type });
 
   return response[0];
 }
@@ -18,9 +18,20 @@ async function findByEmail(emailToSearch: string) {
 
   if (!user) return null;
 
-  const { email, username, passwordHash, id } = user;
+  const { email, username, passwordHash, id, type } = user;
 
-  return { email, username, passwordHash, id };
+  return { email, username, passwordHash, id, type };
 }
 
-export { create, findByEmail };
+async function findById(idToSearch: number) {
+  const response = await db.select().from(users).where(eq(users.id, idToSearch));
+  const [user] = response;
+
+  if (!user) return null;
+
+  const { email, username, passwordHash, id, type } = user;
+
+  return { email, username, passwordHash, id, type };
+}
+
+export { create, findByEmail, findById };

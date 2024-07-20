@@ -13,4 +13,11 @@ type SignInUserRequestDto = {
   password: string;
 };
 
-export { type CreateUser, type CreateUserRequestDto, type SignInUserRequestDto };
+type UserDetails = {
+  id: NonNullable<CreateUser["id"]>;
+  email: NonNullable<CreateUser["email"]>;
+  username: CreateUser["username"];
+  type: NonNullable<CreateUser["type"]>;
+};
+
+export { type CreateUser, type CreateUserRequestDto, type SignInUserRequestDto, type UserDetails };

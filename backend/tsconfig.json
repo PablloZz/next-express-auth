@@ -1,7 +1,7 @@
 {
   "include": ["**/*.ts", "**/*.js"],
   "exclude": ["node_modules"],
-  "files": ["drizzle.config.ts"],
+  "files": ["drizzle.config.ts", "src/index.d.ts"],
   "compilerOptions": {
     "strict": true,
     "noUncheckedIndexedAccess": true,
