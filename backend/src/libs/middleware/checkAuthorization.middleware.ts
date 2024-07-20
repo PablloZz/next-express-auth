@@ -4,7 +4,7 @@ import { ExceptionMessage } from "../enums";
 import { verifyToken } from "../packages/token";
 import { usersService } from "@/packages/users";
 
-async function checkAuthentication(req: Request, _res: Response, next: NextFunction) {
+async function checkAuthorization(req: Request, _res: Response, next: NextFunction) {
   const { authorization } = req.headers;
   const token = authorization?.replace("Bearer ", "");
 
@@ -23,4 +23,4 @@ async function checkAuthentication(req: Request, _res: Response, next: NextFunct
   next();
 }
 
-export { checkAuthentication };
+export { checkAuthorization };
