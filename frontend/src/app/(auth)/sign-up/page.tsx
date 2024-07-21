@@ -1,6 +1,22 @@
+"use client";
+
+import { type ChangeEvent, useCallback, useState } from "react";
 import styles from "./styles.module.css";
+import { SIGN_UP_FORM_DEFAULT_VALUES } from "../libs/constants";
 
 export default function SignUp() {
+  const [formValues, setFormValues] = useState(SIGN_UP_FORM_DEFAULT_VALUES);
+
+  const handleChangeFormValues = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    const { name: fieldName, value: fieldValue } = event.target;
+
+    setFormValues((previous) => ({
+      ...previous,
+      [fieldName]: fieldValue,
+    }));
+  }, []);
+  console.log(formValues);
+
   return (
     <form className={styles["form"]}>
       <h1 className={styles["heading"]}>Sign up</h1>
@@ -13,6 +29,8 @@ export default function SignUp() {
             name="email"
             id="email"
             placeholder="Email"
+            value={formValues.email}
+            onChange={handleChangeFormValues}
             className={styles["input"]}
           />
         </label>
@@ -22,6 +40,8 @@ export default function SignUp() {
             type="text"
             name="username"
             id="username"
+            value={formValues.username}
+            onChange={handleChangeFormValues}
             placeholder="Username"
             className={styles["input"]}
           />
@@ -33,6 +53,8 @@ export default function SignUp() {
             name="password"
             id="password"
             placeholder="Password"
+            value={formValues.password}
+            onChange={handleChangeFormValues}
             className={styles["input"]}
           />
         </label>
@@ -42,7 +64,9 @@ export default function SignUp() {
             type="Confirm password"
             name="confirmPassword"
             id="confirmPassword"
+            value={formValues.confirmPassword}
             placeholder="Confirm Password"
+            onChange={handleChangeFormValues}
             className={styles["input"]}
           />
         </label>
