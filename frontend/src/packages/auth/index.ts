@@ -18,6 +18,6 @@ async function signUp(
   return await parseResponse<AuthResponseDto>(response);
 }
 
-export { type SignUpRequestDto, type SignInRequestDto } from "./libs/types";
+export { type SignUpRequestDto, type SignInRequestDto, type UserDetails } from "./libs/types";
 export { signUpValidationSchema, signInValidationSchema } from "./libs/validationSchemas";
 export { signUp };

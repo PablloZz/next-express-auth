@@ -14,4 +14,4 @@ type UserDetails = {
 
 type AuthResponseDto = { token: string; user: UserDetails };
 
-export { type SignUpRequestDto, type SignInRequestDto, type AuthResponseDto };
+export { type SignUpRequestDto, type SignInRequestDto, type AuthResponseDto, type UserDetails };
