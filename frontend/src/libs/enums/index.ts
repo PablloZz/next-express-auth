@@ -7,4 +7,8 @@ const HttpMethod = {
   POST: "POST",
 } as const;
 
-export { ApiPath, HttpMethod };
+const HttpHeaderKey = {
+  CONTENT_TYPE: "Content-Type",
+} as const;
+
+export { ApiPath, HttpMethod, HttpHeaderKey };
