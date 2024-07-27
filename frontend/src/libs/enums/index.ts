@@ -5,10 +5,12 @@ const ApiPath = {
 
 const HttpMethod = {
   POST: "POST",
+  GET: "GET",
 } as const;
 
 const HttpHeaderKey = {
   CONTENT_TYPE: "Content-Type",
+  AUTHORIZATION: "Authorization",
 } as const;
 
 const HttpContentType = {
