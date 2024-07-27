@@ -12,4 +12,9 @@ const signUpValidationSchema = z
     path: ["confirmPassword"],
   });
 
-export { signUpValidationSchema };
+const signInValidationSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(5),
+});
+
+export { signUpValidationSchema, signInValidationSchema };

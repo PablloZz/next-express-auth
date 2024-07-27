@@ -1,4 +1,4 @@
-import { type SignUpFormValues } from "../types";
+import { type SignInFormValues, type SignUpFormValues } from "../types";
 
 const SIGN_UP_FORM_DEFAULT_VALUES: SignUpFormValues = {
   email: "",
@@ -7,4 +7,9 @@ const SIGN_UP_FORM_DEFAULT_VALUES: SignUpFormValues = {
   confirmPassword: "",
 };
 
-export { SIGN_UP_FORM_DEFAULT_VALUES };
+const SIGN_IN_FORM_DEFAULT_VALUES: SignInFormValues = {
+  email: "",
+  password: "",
+};
+
+export { SIGN_UP_FORM_DEFAULT_VALUES, SIGN_IN_FORM_DEFAULT_VALUES };
