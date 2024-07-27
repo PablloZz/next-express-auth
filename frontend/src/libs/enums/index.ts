@@ -3,4 +3,8 @@ const ApiPath = {
   POSTS: "/posts",
 } as const;
 
-export { ApiPath };
+const HttpMethod = {
+  POST: "POST",
+} as const;
+
+export { ApiPath, HttpMethod };
