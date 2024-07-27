@@ -3,9 +3,13 @@
 import { type ChangeEvent, useCallback, useState } from "react";
 import styles from "./styles.module.css";
 import { SIGN_UP_FORM_DEFAULT_VALUES } from "../libs/constants";
+import type { SignUpFormErrors } from "../libs/types";
+import { signUpValidationSchema } from "../libs/validationSchemas";
+import { joinErrors } from "../libs/helpers";
 
 export default function SignUp() {
   const [formValues, setFormValues] = useState(SIGN_UP_FORM_DEFAULT_VALUES);
+  const [formErrors, setFormErrors] = useState<SignUpFormErrors>({});
 
   const handleChangeFormValues = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const { name: fieldName, value: fieldValue } = event.target;
@@ -15,7 +19,12 @@ export default function SignUp() {
       [fieldName]: fieldValue,
     }));
   }, []);
-  console.log(formValues);
+
+  const handleSubmitForm = useCallback(() => {
+    const { error } = signUpValidationSchema.safeParse(formValues);
+
+    if (error) return setFormErrors(error.flatten().fieldErrors);
+  }, [formValues]);
 
   return (
     <form className={styles["form"]}>
@@ -33,6 +42,9 @@ export default function SignUp() {
             onChange={handleChangeFormValues}
             className={styles["input"]}
           />
+          {formErrors.email && (
+            <span className={styles["error"]}>{joinErrors(formErrors, "email")}</span>
+          )}
         </label>
         <label className={styles["label"]}>
           <span>Username:</span>
@@ -45,6 +57,9 @@ export default function SignUp() {
             placeholder="Username"
             className={styles["input"]}
           />
+          {formErrors.username && (
+            <span className={styles["error"]}>{joinErrors(formErrors, "username")}</span>
+          )}
         </label>
         <label className={styles["label"]}>
           <span>Password:</span>
@@ -57,6 +72,9 @@ export default function SignUp() {
             onChange={handleChangeFormValues}
             className={styles["input"]}
           />
+          {formErrors.password && (
+            <span className={styles["error"]}>{joinErrors(formErrors, "password")}</span>
+          )}
         </label>
         <label className={styles["label"]}>
           <span>Confirm Password:</span>
@@ -69,9 +87,12 @@ export default function SignUp() {
             onChange={handleChangeFormValues}
             className={styles["input"]}
           />
+          {formErrors.confirmPassword && (
+            <span className={styles["error"]}>{joinErrors(formErrors, "confirmPassword")}</span>
+          )}
         </label>
       </fieldset>
-      <button className={styles["button"]} type="button">
+      <button className={styles["button"]} type="button" onClick={handleSubmitForm}>
         Sign up
       </button>
     </form>

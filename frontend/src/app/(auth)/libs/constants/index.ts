@@ -1,6 +1,6 @@
-import { type SignUpForm } from "../types";
+import { type SignUpFormValues } from "../types";
 
-const SIGN_UP_FORM_DEFAULT_VALUES: SignUpForm = {
+const SIGN_UP_FORM_DEFAULT_VALUES: SignUpFormValues = {
   email: "",
   username: "",
   password: "",
