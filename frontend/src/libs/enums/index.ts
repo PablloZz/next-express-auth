@@ -11,4 +11,8 @@ const HttpHeaderKey = {
   CONTENT_TYPE: "Content-Type",
 } as const;
 
-export { ApiPath, HttpMethod, HttpHeaderKey };
+const HttpContentType = {
+  APPLICATION_JSON: "application/json",
+};
+
+export { ApiPath, HttpMethod, HttpHeaderKey, HttpContentType };
