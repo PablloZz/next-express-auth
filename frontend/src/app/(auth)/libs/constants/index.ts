@@ -1,13 +1,13 @@
-import { type SignInFormValues, type SignUpFormValues } from "../types";
+import { type SignInRequestDto, type SignUpRequestDto } from "@/packages/auth";
 
-const SIGN_UP_FORM_DEFAULT_VALUES: SignUpFormValues = {
+const SIGN_UP_FORM_DEFAULT_VALUES: SignUpRequestDto = {
   email: "",
   username: "",
   password: "",
   confirmPassword: "",
 };
 
-const SIGN_IN_FORM_DEFAULT_VALUES: SignInFormValues = {
+const SIGN_IN_FORM_DEFAULT_VALUES: SignInRequestDto = {
   email: "",
   password: "",
 };

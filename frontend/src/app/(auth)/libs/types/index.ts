@@ -1,21 +1,11 @@
-import type z from "zod";
-import { type signInValidationSchema, type signUpValidationSchema } from "../validationSchemas";
-
-type SignUpFormValues = z.infer<typeof signUpValidationSchema>;
+import { type SignInRequestDto, type SignUpRequestDto } from "@/packages/auth";
 
 type SignUpFormErrors = {
-  [Field in keyof SignUpFormValues]?: string[];
+  [Field in keyof SignUpRequestDto]?: string[];
 };
-
-type SignInFormValues = z.infer<typeof signInValidationSchema>;
 
 type SignInFormErrors = {
-  [Field in keyof SignInFormValues]?: string[];
+  [Field in keyof SignInRequestDto]?: string[];
 };
 
-export {
-  type SignUpFormValues,
-  type SignUpFormErrors,
-  type SignInFormValues,
-  type SignInFormErrors,
-};
+export { type SignUpFormErrors, type SignInFormErrors };

@@ -4,8 +4,8 @@ import { type ChangeEvent, useCallback, useState } from "react";
 import styles from "./styles.module.css";
 import { SIGN_UP_FORM_DEFAULT_VALUES } from "../libs/constants";
 import { type SignUpFormErrors } from "../libs/types";
-import { signUpValidationSchema } from "../libs/validationSchemas";
 import { joinErrors } from "../libs/helpers";
+import { signUpValidationSchema } from "@/packages/auth";
 
 export default function SignUp() {
   const [formValues, setFormValues] = useState(SIGN_UP_FORM_DEFAULT_VALUES);
@@ -27,6 +27,8 @@ export default function SignUp() {
     const { error } = signUpValidationSchema.safeParse(formValues);
 
     if (error) return setFormErrors(error.flatten().fieldErrors);
+
+    setFormErrors({});
   }, [formValues, setFormErrors]);
 
   return (

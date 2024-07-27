@@ -4,8 +4,8 @@ import { useCallback, useState, type ChangeEvent } from "react";
 import { SIGN_IN_FORM_DEFAULT_VALUES } from "../libs/constants";
 import { type SignInFormErrors } from "../libs/types";
 import styles from "./styles.module.css";
-import { signInValidationSchema } from "../libs/validationSchemas";
 import { joinErrors } from "../libs/helpers";
+import { signInValidationSchema } from "@/packages/auth";
 
 export default function SignIn() {
   const [formValues, setFormValues] = useState(SIGN_IN_FORM_DEFAULT_VALUES);
