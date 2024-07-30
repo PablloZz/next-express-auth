@@ -33,9 +33,12 @@ export default function SignIn() {
 
     setFormErrors({});
     const { email, password } = formValues;
-    const { user, token } = await signIn({ email, password });
-    localStorage.setItem(TOKEN, token);
-    handleSetUserDetails(user);
+    const user = await signIn({ email, password });
+
+    if (user) {
+      localStorage.setItem(TOKEN, user.token);
+      handleSetUserDetails(user.user);
+    }
   }, [formValues, setFormErrors]);
 
   return (

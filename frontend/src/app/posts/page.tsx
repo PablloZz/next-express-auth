@@ -8,8 +8,9 @@ export default function Posts() {
 
   useEffect(() => {
     async function fetchPosts() {
-      const { posts } = await getPosts();
-      setPosts(posts);
+      const posts = await getPosts();
+
+      if (posts) setPosts(posts.posts);
     }
 
     fetchPosts();

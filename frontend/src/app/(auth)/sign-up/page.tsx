@@ -33,9 +33,12 @@ export default function SignUp() {
 
     setFormErrors({});
     const { email, username, password } = formValues;
-    const { user, token } = await signUp({ email, username, password });
-    localStorage.setItem(TOKEN, token);
-    handleSetUserDetails(user);
+    const user = await signUp({ email, username, password });
+
+    if (user) {
+      localStorage.setItem(TOKEN, user.token);
+      handleSetUserDetails(user.user);
+    }
   }, [formValues, setFormErrors]);
 
   return (

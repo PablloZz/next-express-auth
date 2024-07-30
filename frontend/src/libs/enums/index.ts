@@ -17,4 +17,9 @@ const HttpContentType = {
   APPLICATION_JSON: "application/json",
 };
 
-export { ApiPath, HttpMethod, HttpHeaderKey, HttpContentType };
+const HttpCode = {
+  SUCCESS: 200,
+  CREATED: 201,
+} as const;
+
+export { ApiPath, HttpMethod, HttpHeaderKey, HttpContentType, HttpCode };
