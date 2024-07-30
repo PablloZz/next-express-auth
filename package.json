@@ -1,8 +1,5 @@
 {
   "name": "next-express-auth",
   "version": "1.0.0",
-  "license": "MIT",
-  "dependencies": {
-    "zod": "^3.23.8"
-  }
+  "license": "MIT"
 }
