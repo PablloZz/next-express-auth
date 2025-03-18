@@ -2,6 +2,7 @@
   "extends": "../tsconfig.json",
   "include": ["**/*.ts", "**/*.js"],
   "exclude": ["node_modules"],
+  "files": ["drizzle.config.ts"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
