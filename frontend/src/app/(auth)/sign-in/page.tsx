@@ -5,11 +5,14 @@ import { SIGN_IN_FORM_DEFAULT_VALUES } from "../libs/constants";
 import { type SignInFormErrors } from "../libs/types";
 import styles from "./styles.module.css";
 import { joinErrors } from "../libs/helpers";
-import { signInValidationSchema } from "@/packages/auth";
+import { signIn, signInValidationSchema } from "@/packages/auth";
+import { useAuthContext } from "@/context/authContext";
+import { TOKEN } from "@/libs/constants";
 
 export default function SignIn() {
   const [formValues, setFormValues] = useState(SIGN_IN_FORM_DEFAULT_VALUES);
   const [formErrors, setFormErrors] = useState<SignInFormErrors>({});
+  const { handleSetUserDetails } = useAuthContext();
 
   const handleChangeFormValues = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -23,12 +26,19 @@ export default function SignIn() {
     [setFormValues],
   );
 
-  const handleSubmitForm = useCallback(() => {
+  const handleSubmitForm = useCallback(async () => {
     const { error } = signInValidationSchema.safeParse(formValues);
 
     if (error) return setFormErrors(error.flatten().fieldErrors);
 
     setFormErrors({});
+    const { email, password } = formValues;
+    const user = await signIn({ email, password });
+
+    if (user) {
+      localStorage.setItem(TOKEN, user.token);
+      handleSetUserDetails(user.user);
+    }
   }, [formValues, setFormErrors]);
 
   return (

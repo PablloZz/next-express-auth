@@ -26,6 +26,7 @@ const ExceptionMessage = {
   INTERNAL_SERVER_ERROR: "An error occurred while processing your request. Please try again later",
   AUTHORIZATION_HEADER: "Authorization header should be in format: Bearer <token>",
   INVALID_TOKEN: "Invalid token",
+  VALIDATION_ERROR: "Data is not valid",
 };
 
 export { TokenExpirationTime, ApiPath, HttpCode, ExceptionMessage };

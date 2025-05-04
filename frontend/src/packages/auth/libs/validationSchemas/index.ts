@@ -7,7 +7,7 @@ const signUpValidationSchema = z
     password: z.string().min(5),
     confirmPassword: z.string().min(5),
   })
-  .refine((values) => values.password !== values.confirmPassword, {
+  .refine((values) => values.password === values.confirmPassword, {
     message: "Passwords mismatch",
     path: ["confirmPassword"],
   });
