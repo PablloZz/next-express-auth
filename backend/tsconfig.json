@@ -1,9 +1,18 @@
 {
-  "extends": "../tsconfig.json",
   "include": ["**/*.ts", "**/*.js"],
   "exclude": ["node_modules"],
-  "files": ["drizzle.config.ts"],
+  "files": ["drizzle.config.ts", "src/index.d.ts"],
   "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

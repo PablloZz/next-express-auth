@@ -6,7 +6,7 @@ export default defineConfig({
   out: "src/libs/packages/drizzle/migrations",
   dialect: "postgresql",
   dbCredentials: {
-    url: config.env.NEON_CONNECTION_STRING,
+    url: config.env.db.NEON_CONNECTION_STRING,
   },
   verbose: true,
   strict: true,

@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1719744131634,
-      "tag": "0000_useful_cerise",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1720249293503,
-      "tag": "0001_conscious_groot",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1720266480964,
-      "tag": "0002_abandoned_mikhail_rasputin",
+      "when": 1721464363034,
+      "tag": "0000_premium_owl",
       "breakpoints": true
     }
   ]

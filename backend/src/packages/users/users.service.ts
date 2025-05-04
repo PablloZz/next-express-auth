@@ -18,4 +18,8 @@ async function findByEmail(email: string) {
   return await usersRepository.findByEmail(email);
 }
 
-export { create, findByEmail };
+async function findById(id: number) {
+  return await usersRepository.findById(id);
+}
+
+export { create, findByEmail, findById };
