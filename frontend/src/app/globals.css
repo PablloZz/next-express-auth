@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  border: none;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+}
+
+.visibility-hidden {
+  position: absolute;
+  left: -10000px;
+}
