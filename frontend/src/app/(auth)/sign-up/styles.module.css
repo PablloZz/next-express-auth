@@ -39,7 +39,9 @@
   border-radius: 10px;
   font-size: 18px;
   background: deepskyblue;
-  transition: background .2s ease, transform .2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .button:hover {
@@ -48,4 +50,9 @@
 
 .button:active {
   transform: translateY(2px) scaleX(99%);
+}
+
+.error {
+  color: red;
+  font-size: 14px;
 }
